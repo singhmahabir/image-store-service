@@ -1,0 +1,27 @@
+server:
+  port: 9098
+# we can set active profile from here as well no need to pass at run time
+spring:
+  profiles:
+#    active: default,h2,admin,actuator
+    active:
+      - h2
+      - actuator
+      - rabbit
+#      - logging
+
+# info property details shows in actuators info url http://localhost:9098/actuator/info
+info:
+  name: '@project.artifactId@'
+  description: '@project.description@'
+  version: '@project.version@'
+  id: iss
+  artifactId: '@project.artifactId@'
+  packaging: '@project.packaging@'
+  groupId: '@project.groupId@'
+  servlet: 
+    multipart:
+      enable: true
+      maxFileSize: 50MB
+      maxRequestSize: 50MB
+      location: ${java.io.tmpdir}

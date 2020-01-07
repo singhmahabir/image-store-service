@@ -1,0 +1,27 @@
+spring:
+  profiles: db
+  datasource:  
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: postgres
+#    This property controls the default auto-commit behavior of connections returned from the pool. It is a boolean value. Default: true
+    autoCommit: true
+    maximumPoolSize: 20  #default 10 
+    connectionTimeout: 30000 # Default: 30000 (30 seconds)
+#    driverClassName is optional
+#    driverClassName: org.postgresql.Driver
+    
+  jpa:
+#        Use spring.jpa.properties.* for Hibernate native properties (the prefix is
+#        stripped before adding them to the entity manager)
+    properties:
+      hibernate: 
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#         Show or not log for each sql query
+    show-sql: true
+    hibernate:
+#         Hibernate ddl auto (create, create-drop, update)
+      ddl-auto: create
+
+defaultvalue: db
+defaultvalue1: db1
