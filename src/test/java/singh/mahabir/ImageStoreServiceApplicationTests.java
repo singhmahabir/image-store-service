@@ -7,10 +7,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//@ExtendWith(MockitoExtension.class)
 public class ImageStoreServiceApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+
+    }
 
 }
