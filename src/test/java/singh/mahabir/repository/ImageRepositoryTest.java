@@ -6,40 +6,31 @@ package singh.mahabir.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author Mahabir Singh
  *
  */
 
-//@RunWith(SpringRunner.class)
-@ExtendWith(MockitoExtension.class)
-//@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@DataJpaTest
+//@ExtendWith(SpringExtension.class)
 public class ImageRepositoryTest {
 
-    @BeforeAll
-    public static void inti() {
-	MockitoAnnotations.initMocks(ImageRepositoryTest.class);
-    }
-
-    private ImageRepository rep = Mockito.mock(ImageRepository.class);
-
-//    @Mock
-//    private ImageRepository rep;
+    @Autowired
+    private ImageRepository rep;
 
     @Test
     public void testCount() {
-
-	Mockito.when(rep.count()).thenReturn(0l);
 	assertThat(rep.count()).isEqualTo(0);
 	ImageEntity entity = new ImageEntity();
 	entity.setImageName("MyImage");
@@ -47,15 +38,13 @@ public class ImageRepositoryTest {
 	album.setId("MyAlbum");
 	entity.setAlbum(album);
 
-	Mockito.when(rep.save(entity)).thenReturn(entity);
 	ImageEntity save = rep.save(entity);
 
 	assertThat(save).isEqualTo(entity);
 
-//	Mockito.when(rep.findByAlbumId("MyAlbum)).thenReturn(entity);
-//	List<ImageEntity> findByAlbumId = rep.findByAlbumId("MyAlbum");
-//	long count = findByAlbumId.stream().filter(i -> i.getAlbum().getId().equals("MyAlbum")).count();
-//	assertThat(count).isEqualTo(1);
+	List<ImageEntity> findByAlbumId = rep.findByAlbumId("MyAlbum");
+	long count = findByAlbumId.stream().filter(i -> i.getAlbum().getId().equals("MyAlbum")).count();
+	assertThat(count).isEqualTo(1);
     }
 
     @Test

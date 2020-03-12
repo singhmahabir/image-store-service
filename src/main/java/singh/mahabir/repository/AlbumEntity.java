@@ -36,4 +36,9 @@ public class AlbumEntity {
     private Date creationDate = Date.valueOf(LocalDate.now());
 
     private Date lastUpdateDate = Date.valueOf(LocalDate.now());
+
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+////    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private List<ImageEntity> images;
 }
