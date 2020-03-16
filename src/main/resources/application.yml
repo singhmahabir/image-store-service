@@ -8,6 +8,7 @@ spring:
       - h2
       - actuator
       - rabbit
+#      - oauth2
 #      - logging
 
 # info property details shows in actuators info url http://localhost:9098/actuator/info

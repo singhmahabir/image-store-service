@@ -82,6 +82,25 @@
 			<artifactId>spring-cloud-stream-test-support</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.3.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.0.9.RELEASE</version>
+        </dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -102,26 +121,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!-- One Way to dockerize  create image name -->
-<!--             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <imageName>image-store-service</imageName>
-                    <baseImage>java:8</baseImage>
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-                    copy the service's jar file from target into the root directory 
-                        of the image
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin> -->
+			<!-- One Way to dockerize create image name -->
+			<!-- <plugin> <groupId>com.spotify</groupId> <artifactId>docker-maven-plugin</artifactId> 
+				<version>1.2.1</version> <configuration> <imageName>image-store-service</imageName> 
+				<baseImage>java:8</baseImage> <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint> 
+				copy the service's jar file from target into the root directory of the image 
+				<resources> <resource> <targetPath>/</targetPath> <directory>${project.build.directory}</directory> 
+				<include>${project.build.finalName}.jar</include> </resource> </resources> 
+				</configuration> </plugin> -->
 		</plugins>
 	</build>
 
